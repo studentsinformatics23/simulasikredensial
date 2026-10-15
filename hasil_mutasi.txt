@@ -1,0 +1,12 @@
+M1 nonce tidak sekali pakai                      TERDETEKSI oleh T-10
+M2 status DICABUT diabaikan                      TERDETEKSI oleh T-03, T-05
+M3 kedaluwarsa diabaikan                         TERDETEKSI oleh T-04
+M4 bukti pemegang tidak diperiksa                TERDETEKSI oleh T-05, T-10
+M5 kuorum tata kelola dilonggarkan               TERDETEKSI oleh T-16
+M6 otorisasi penerbit kredensial dilonggarkan    TERDETEKSI oleh T-11
+M7 pemeriksaan hash blok dimatikan               TERDETEKSI oleh T-13
+M8 kompromi kunci diabaikan                      TERDETEKSI oleh T-12
+M9 komitmen atribut tidak dicek                  TERDETEKSI oleh T-09
+M10 kuorum konsensus dilonggarkan                TERDETEKSI oleh T-17
+
+Ringkasan: 10 dari 10 mutan terdeteksi.

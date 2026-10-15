@@ -1,0 +1,64 @@
+
+=== 1. Jaringan konsorsium (simulasi, dummy) ===
+  node Universitas Contoh Nusantara           peran=ISSUER+VALIDATOR       tinggi=0
+  node Institut Contoh Teknologi              peran=ISSUER+VALIDATOR       tinggi=0
+  node Politeknik Contoh Mandiri              peran=ISSUER+VALIDATOR       tinggi=0
+  node Lembaga Sertifikasi Profesi Contoh     peran=ISSUER+VALIDATOR       tinggi=0
+  node Otoritas Pendidikan Contoh             peran=OBSERVER               tinggi=0
+  validator=4, kuorum konsensus=3 (mayoritas), kuorum tata kelola=3 (2/3)
+
+=== 2. Penerbitan 7 kredensial dummy (ijazah, transkrip, sertifikat) ===
+  ijazah_alya        Ijazah                 penerbit=Universitas Contoh Nusantara         blok=1
+  transkrip_alya     Transkrip              penerbit=Universitas Contoh Nusantara         blok=2
+  sertifikat_alya    SertifikatKompetensi   penerbit=Lembaga Sertifikasi Profesi Contoh   blok=3
+  ijazah_bagas       Ijazah                 penerbit=Institut Contoh Teknologi            blok=4
+  transkrip_bagas    Transkrip              penerbit=Institut Contoh Teknologi            blok=5
+  ijazah_citra       Ijazah                 penerbit=Politeknik Contoh Mandiri            blok=6
+  sertifikat_citra   SertifikatKompetensi   penerbit=Lembaga Sertifikasi Profesi Contoh   blok=7
+
+  Isi catatan on-chain untuk satu ijazah (hanya hash dan metadata, tanpa data pribadi):
+  {"issuer": "did:dummy:universitas-contoh-nusantara", "type": "Ijazah", "cred_hash": "468125a83366641b...", "root": "d05bd7575efaa10c...", "expires_at": null, "status": "ACTIVE", "anchored_height": 1, "anchor_key": "2a8dce21f666bfb6..."}
+
+=== 3. Pengungkapan selektif ===
+  Pemberi kerja (ijazah)  : OK | terungkap: {"program_studi": "S1 Informatika", "gelar": "S.Kom.", "status_kelulusan": "LULUS"}
+  Kampus tujuan (transkrip): OK | terungkap: {"ipk": 3.72, "total_sks": 144}
+  Pemberi kerja (sertifikat): OK | terungkap: {"skema": "Analis Data (dummy)", "hasil": "KOMPETEN"}
+
+=== 4. Penangguhan dan pencabutan ===
+  setelah ditangguhkan : DITANGGUHKAN
+  setelah diaktifkan   : OK
+  setelah dicabut      : DICABUT
+
+=== 5. Kedaluwarsa (jam simulasi maju 366 hari) ===
+  sertifikat Alya: KEDALUWARSA
+  ijazah Alya     : OK
+
+=== 6. Pemulihan kunci lulusan (Citra kehilangan kunci) ===
+  kredensial lama : DICABUT
+  kredensial baru : OK
+
+=== 7. Kompromi kunci penerbit dan pemulihannya ===
+  tata kelola menandai kunci UCN dikompromikan sejak blok 13: disetujui
+  kredensial sebelum kompromi : OK
+  kredensial sejak kompromi   : KUNCI_PENERBIT_DIKOMPROMIKAN
+  transaksi dengan kunci curian: KUNCI_DIKOMPROMIKAN
+  kunci pengganti disetujui kuorum: True
+
+=== 8. Kegagalan node (konsensus mayoritas) ===
+  1 node mati  : commit berhasil, tinggi 15 -> 16
+  2 node mati  : penjangkaran ditolak: KUORUM_KONSENSUS_GAGAL (tinggi tetap 16)
+  setelah pulih : konsisten=True
+    Universitas Contoh Nusantara           tinggi=16 head=e179e14e999d rantai_valid=True
+    Institut Contoh Teknologi              tinggi=16 head=e179e14e999d rantai_valid=True
+    Politeknik Contoh Mandiri              tinggi=16 head=e179e14e999d rantai_valid=True
+    Lembaga Sertifikasi Profesi Contoh     tinggi=16 head=e179e14e999d rantai_valid=True
+    Otoritas Pendidikan Contoh             tinggi=16 head=e179e14e999d rantai_valid=True
+
+=== 9. Log audit verifier (berantai-hash, tanpa nilai atribut) ===
+  jumlah entri=12, utuh=True
+  contoh entri: {"verifier": "did:dummy:verifier-pt-contoh-rekrut", "cred_id": "urn:cred:dummy:0001", "hasil": "OK", "ts": 1792022400}
+
+=== 10. Kecepatan simulasi (satu proses, di memori; bukan tolok ukur jaringan nyata) ===
+  n=300, blok=6, node=5
+  throughput terbit  : 1154 tx/dtk
+  latensi verifikasi : rerata 0.38 ms, p95 0.52 ms, maks 0.87 ms

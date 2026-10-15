@@ -1,0 +1,43 @@
+test_t01_terbit_dan_verifikasi_semua_jenis (test_kredensial_sim.Fungsional.test_t01_terbit_dan_verifikasi_semua_jenis)
+T-01 Semua kredensial dummy (ijazah, transkrip, sertifikat) terbit dan lolos verifikasi ... ok
+test_t02_pengungkapan_selektif (test_kredensial_sim.Fungsional.test_t02_pengungkapan_selektif)
+T-02 Verifier hanya menerima atribut yang diminta; data lain tidak bocor ... ok
+test_t03_pencabutan_dan_penangguhan (test_kredensial_sim.Fungsional.test_t03_pencabutan_dan_penangguhan)
+T-03 Penangguhan, pengaktifan kembali, dan pencabutan permanen ... ok
+test_t04_kedaluwarsa (test_kredensial_sim.Fungsional.test_t04_kedaluwarsa)
+T-04 Sertifikat kompetensi kedaluwarsa setelah masa berlaku ... ok
+test_t05_pemulihan_kunci_lulusan (test_kredensial_sim.Fungsional.test_t05_pemulihan_kunci_lulusan)
+T-05 Lulusan kehilangan kunci: kredensial lama dicabut, diterbitkan ulang ke kunci baru ... ok
+test_t06_rotasi_kunci_penerbit (test_kredensial_sim.Fungsional.test_t06_rotasi_kunci_penerbit)
+T-06 Rotasi kunci penerbit terencana: kredensial lama tetap valid, penerbitan baru memakai kunci baru ... ok
+test_t07_interoperabilitas_json (test_kredensial_sim.Fungsional.test_t07_interoperabilitas_json)
+T-07 Kredensial diekspor ke JSON dan diverifikasi ulang tanpa objek internal ... ok
+test_t16_onboarding_dengan_kuorum (test_kredensial_sim.JaringanDanTataKelola.test_t16_onboarding_dengan_kuorum)
+T-16 Anggota baru hanya masuk bila disetujui kuorum validator (3 dari 4) ... ok
+test_t17_toleransi_kegagalan_node (test_kredensial_sim.JaringanDanTataKelola.test_t17_toleransi_kegagalan_node)
+T-17 Konsensus mayoritas: 1 node mati tetap commit; 2 node mati menolak commit; node pulih menyusul ... ok
+test_t08_pemalsuan_penerbit (test_kredensial_sim.Keamanan.test_t08_pemalsuan_penerbit)
+T-08 Penerbit tak terdaftar tidak dapat menjangkarkan atau lolos verifikasi ... ok
+test_t09_manipulasi_data (test_kredensial_sim.Keamanan.test_t09_manipulasi_data)
+T-09 Perubahan atribut atau isi kredensial terdeteksi ... ok
+test_t10_replay_dan_pencurian_presentasi (test_kredensial_sim.Keamanan.test_t10_replay_dan_pencurian_presentasi)
+T-10 Presentasi tidak dapat diulang, dialihkan ke verifier lain, atau dipakai tanpa kunci pemegang ... ok
+test_t11_otorisasi_lintas_penerbit (test_kredensial_sim.Keamanan.test_t11_otorisasi_lintas_penerbit)
+T-11 Penerbit lain, pengamat, dan non-validator ditolak melakukan aksi di luar wewenang ... ok
+test_t12_kompromi_kunci_penerbit (test_kredensial_sim.Keamanan.test_t12_kompromi_kunci_penerbit)
+T-12 Kunci penerbit dikompromikan: penerbitan sejak waktu kompromi tidak sah, sebelumnya tetap sah ... ok
+test_t13_pemalsuan_riwayat_ledger (test_kredensial_sim.Keamanan.test_t13_pemalsuan_riwayat_ledger)
+T-13 Perubahan riwayat blok pada satu node terdeteksi ... ok
+test_t14_pemalsuan_log_audit (test_kredensial_sim.Keamanan.test_t14_pemalsuan_log_audit)
+T-14 Log audit berantai-hash; perubahan entri terdeteksi dan log tidak memuat nilai atribut ... ok
+test_t15_privasi_on_chain (test_kredensial_sim.Keamanan.test_t15_privasi_on_chain)
+T-15 Seluruh ledger tidak memuat data pribadi lulusan maupun identitas pemegang ... ok
+test_t18_throughput_dan_latensi_simulasi (test_kredensial_sim.Performa.test_t18_throughput_dan_latensi_simulasi)
+T-18 Throughput terbit dan latensi verifikasi pada simulasi dummy (satu proses) ... 
+    [T-18] hasil: n=300, blok=6, node=5, terbit=1129 tx/dtk, verifikasi rerata=0.37 ms, p95=0.49 ms, maks=1.44 ms
+ok
+
+----------------------------------------------------------------------
+Ran 18 tests in 0.633s
+
+OK
